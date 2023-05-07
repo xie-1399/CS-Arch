@@ -7,3 +7,10 @@ add_executable(Thread OS/Introduce/Thread.cpp)
 
 add_executable(logisim OS/NJU/Example/logisim.c)
 add_executable(hanoi-nr OS/NJU/Example/hanoi-nr.c)
+
+# About Thread
+add_executable(MUlti-thread OS/NJU/Thread/MUlti-thread.c)
+add_executable(stack-probe OS/NJU/Thread/stack-probe.c)
+add_executable(alipay OS/NJU/Thread/alipay.c)
+add_executable(sum OS/NJU/Thread/sum.c)
+add_executable(mem-ordering OS/NJU/Thread/mem-ordering.c)
