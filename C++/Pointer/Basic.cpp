@@ -8,6 +8,15 @@ int *swap(int *px , int *py){
     return px;
 }
 
+void get_char_while(){
+    char ch;
+    while ((ch = getchar())!=EOF && ch != '\n'){
+        printf("%c\n",ch);
+    }
+}
+
+
+
 int main(int argc,char *argv[]){
     int i = 10 , j = 20; //0
     int *pi = &i;
@@ -25,5 +34,9 @@ int main(int argc,char *argv[]){
     for(int  q = 0 ; argv[q] != NULL ; q++){
         printf("argv[%d] = %s\n",q,argv[q]);
     }
+    get_char_while();
+
+
+
     return 0;
 }
