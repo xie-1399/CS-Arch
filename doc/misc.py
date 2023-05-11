@@ -98,13 +98,13 @@ if __name__ == '__main__':
                     get_picture(pic_path,args.topic)
                     text = rename("png",text)
                     text = "![avatar]" + "https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/"+ args.topic + "/" \
-                           + text.split("\\")[-1].replace(")","") + ")"
+                           + text.split("\\")[-1]
                 elif(str(text).find(".jpg")!=-1):
                     pic_path = text.split('(')[-1].replace(")","").replace("\n","")
                     get_picture(pic_path,args.topic)
                     text = rename("jpg",text)
                     text = "![avatar]" + "(https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/"+ args.topic + "/" \
-                           + text.split("\\")[-1].replace(")","") + ")"
+                           + text.split("\\")[-1]
                 update_list.append(text)
 
         #Update file
