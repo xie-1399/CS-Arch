@@ -20,45 +20,44 @@
 
 （3）利用虚拟存储器，可以管理每一个页的访问权限
 
+![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress1.png
+)
 #### 地址转换
 
 基于分页的虚拟存储器，虚拟地址的划分通常以页为单位，而在物理内存中就被称作frame，在页中有页偏移量和VPN（表示哪一个页），在Frame中也有偏移量和PFN，所以其实转化就是从VPN到PFN之间的转化（页是进行地址转换的最小单位）
 
-![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress1.png
+![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/image-VirtrualAddress2.png
 )
-如果发现在物理内存中找不到这个页，那么MMU就会产生一个Page Fault的异常发给处理器，这时处理器就需要转到异常处理程序（其实就是操作系统的代码），这时也可能会出现脏数据的情况
+如果发现在物理内存中找不到这个页，那么MMU就会产生一个Page Fault的异常发给处理器，这时处理器就需要转到异常处理程序（其实就是操作系统的代码)，这时也可能会出现脏数据的情况
 
-![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress2.png
-)
 ##### 单级页表
 
 每个程序都有自己的页表，在处理器中包含一个页表寄存器，页表中存储的其实就是VPN到PFN的映射关系，注意页表的表项是有有效位的，如果有效位是0，代表这个虚拟地址对应的4KB（页表大小）还没有被映射到物理内存中，此时就需要操作系统从更下一级去搬移数据
 
-![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress3.png
+![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress3.png
 )
-一个程序对应的页表，连同PC和通用寄存器一起，组成了程序的状态（操作系统通过将一个进程的状态加载到处理器上，就可以使这个进程进入活跃的状态），而进程进行状态保存的时候也不用保存整个的页表，只需要保存页表寄存器
+一个程序对应的页表，连同PC和通用寄存器一起，组成了程序的状态（操作系统通过将一个进程的状态加载到处理器上，就可以使这个进程进入活跃的状态)，而进程进行状态保存的时候也不用保存整个的页表，只需要保存页表寄存器
 
 不同的进程如果出现相同的虚拟地址，就需要操作系统将这些不同的进程分配到不同的地方
 
-![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress4.png
-)
-##### 多级页表
+![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress4.png
+)##### 多级页表
 
 将线性页表划分成若干个更小的页表，一级页表中记录了每个子页表在内存中的位置
 
-![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress5.png
+![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress5.png
 )
 其实就是将线性页表分成了多少等份，这样就变成了二级页表，比如
 
 比如一个32位的虚拟地址，可以利用前10位来索引第一级页表，使用中间10位 + 一级页表的基地址索引二级页表的页表项（PTE）
 
-![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress6.png
+![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress6.png
 )
 这样当虚拟地址的p1部分变化的时候，操作系统在物理内存上创建一个新的第二级页表
 
 显然这个一级页表的存储空间是不可避免的，而二级页表是否存在就需要根据程序中的虚拟地址的值来决定，随着处理器位数的增加，可以通过增加级数的方式来减少页表对于物理内存的占用
 
-![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress7.png
+![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress7.png
 )
 但分页也会带来一些缺点，比如二级页表需要访问两次物理地址才能得到虚拟地址对应的物理地址
 
@@ -76,9 +75,8 @@
 
 同时也还设置了脏位状态
 
-![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress8.png
-)
-#### MMU
+![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress8.png
+)#### MMU
 
 MMU时处理器中负责将虚拟地址转化为物理地址的功能单元
 
@@ -99,9 +97,8 @@ MMU时处理器中负责将虚拟地址转化为物理地址的功能单元
 需要注意异常处理程序需要替换某个页的时候，如果这个页的脏状态为1，表示这个页在以前被修改过，因此就需要首先将它从物理内存写到硬盘中，同时这个新的映射关系也会被写到页表中
 ```
 
-![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress9.png
-)
-#### 程序保护
+![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress9.png
+)#### 程序保护
 
 需要注意的几个问题：
 
@@ -111,11 +108,11 @@ MMU时处理器中负责将虚拟地址转化为物理地址的功能单元
 
 在ARM架构中，规定处理器可以工作在User、Priviledge模式下，并且直接规定了每个页的访问权限
 
-![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress10.png
+![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress10.png
 )
 这样如果权限不符合规定的时候，就会产生一个异常来通知处理器，因此可以当作是在地址转换的过程中加入权限检查的过程
 
-![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress11.png
+![avatar]https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/VirtrualAddress/VirtrualAddress11.png
 )
 当然如果在不同级的页表下设置的权限对应的粒度是不一样的
 
