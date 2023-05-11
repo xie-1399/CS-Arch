@@ -97,14 +97,14 @@ if __name__ == '__main__':
                     print("pic_path:",pic_path)
                     get_picture(pic_path,args.topic)
                     text = rename("png",text)
-                    text = "https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/"+ args.topic + "/" \
-                           + text.split("\\")[-1].replace(")","")
+                    text = "![avatar]" + "https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/"+ args.topic + "/" \
+                           + text.split("\\")[-1].replace(")","") + ")"
                 elif(str(text).find(".jpg")!=-1):
                     pic_path = text.split('(')[-1].replace(")","").replace("\n","")
                     get_picture(pic_path,args.topic)
                     text = rename("jpg",text)
-                    text = "https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/"+ args.topic + "/" \
-                           + text.split("\\")[-1].replace(")","")
+                    text = "![avatar]" + "(https://github.com/xie-1399/RISCVZone/tree/main/doc/pic/"+ args.topic + "/" \
+                           + text.split("\\")[-1].replace(")","") + ")"
                 update_list.append(text)
 
         #Update file
