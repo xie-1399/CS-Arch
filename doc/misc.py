@@ -46,6 +46,7 @@ def get_picture(file,topic,picpath = "/home/xxl/RISCVZone/doc/pic"):
     else:
         command = "sudo " + "cp -r " + filepath + " " + picpath + "/" + str(topic) \
                   + "/" + str(topic) + str(id) + ".jpg"
+    id += 1
     try:
         os.system(command)
     except:

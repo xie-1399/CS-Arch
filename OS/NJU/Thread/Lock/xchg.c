@@ -10,7 +10,7 @@
 int cas(int *addr,int cmp_val,int new_val){
     int old_val = *addr;
     if(old_val == cmp_val){
-        *addr = new_val;
+        *addr =  new_val;
         return 0;
     } else{
         return 1;

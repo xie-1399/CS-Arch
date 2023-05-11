@@ -12,6 +12,10 @@ add_executable(hanoi-nr OS/NJU/Example/hanoi-nr.c)
 add_executable(MUlti-thread OS/NJU/Thread/MUlti-thread.c)
 add_executable(stack-probe OS/NJU/Thread/stack-probe.c)
 add_executable(alipay OS/NJU/Thread/alipay.c)
-add_executable(sum OS/NJU/Thread/sum.c OS/NJU/Thread/Lock/xchg.c OS/NJU/Thread/Lock/futex.c)
+add_executable(sum OS/NJU/Thread/sum.c)
 add_executable(mem-ordering OS/NJU/Thread/mem-ordering.c)
 add_executable(peterson-barrier OS/NJU/Thread/peterson-barrier.c)
+
+#About Lock
+add_executable(xchg OS/NJU/Thread/Lock/xchg.c)
+add_executable(test OS/NJU/Thread/Lock/test.c)
