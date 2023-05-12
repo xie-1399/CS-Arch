@@ -18,4 +18,3 @@ add_executable(peterson-barrier OS/NJU/Thread/peterson-barrier.c)
 
 #About Lock
 add_executable(xchg OS/NJU/Thread/Lock/xchg.c)
-add_executable(test OS/NJU/Thread/Lock/test.c)

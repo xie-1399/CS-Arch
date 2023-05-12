@@ -10,4 +10,6 @@
 
 最后模拟整个计算机的运行，跑通一个比较复杂的图形交互程序
 
+克隆的子模块：（1）riscv-xv6（git submodule add）
+
 非常好的材料：https://csdiy.wiki/
