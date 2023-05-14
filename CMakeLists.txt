@@ -4,7 +4,6 @@ project(RISCVZone)
 
 add_executable(ProcessAPI OS/Introduce/ProcessAPI.cpp)
 add_executable(Thread OS/Introduce/Thread.cpp)
-
 add_executable(logisim OS/NJU/Example/logisim.c)
 add_executable(hanoi-nr OS/NJU/Example/hanoi-nr.c)
 
@@ -18,3 +17,10 @@ add_executable(peterson-barrier OS/NJU/Thread/peterson-barrier.c)
 
 #About Lock
 add_executable(xchg OS/NJU/Thread/Lock/xchg.c)
+
+
+
+#About C++
+add_executable(funcPointer C++/Pointer/funcPointer.c)
+add_executable(Structure C++/Pointer/Structure.c)
+add_executable(IO C++/Pointer/IO.c)
