@@ -18,9 +18,10 @@ add_executable(peterson-barrier OS/NJU/Thread/peterson-barrier.c)
 #About Lock
 add_executable(xchg OS/NJU/Thread/Lock/xchg.c)
 
-
-
 #About C++
 add_executable(funcPointer C++/Pointer/funcPointer.c)
 add_executable(Structure C++/Pointer/Structure.c)
 add_executable(IO C++/Pointer/IO.c)
+add_executable(Stard C++/Example/function.cpp C++/Example/Stard.cpp)
+add_executable(signal C++/Simulation/signal_function.cpp
+        C++/Simulation/parseArgFirst.cpp C++/Simulation/Verilatorsim.cpp)

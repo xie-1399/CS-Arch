@@ -26,6 +26,14 @@ def mkdir(filename):
     except:
         raise Exception("Can't mkdir")
 
+def replace_str(text , string):
+    text = text.split("\\")[-1]
+    if(str(text).find(string) != -1):
+        value = str(text).replace(string,"")
+        return value
+    else:
+        return text
+
 def get_picture(file,topic,picpath = "/home/xxl/RISCVZone/doc/pic"):
     global id
     filepath = "/mnt/c"
@@ -97,14 +105,16 @@ if __name__ == '__main__':
                     print("pic_path:",pic_path)
                     get_picture(pic_path,args.topic)
                     text = rename("png",text)
+                    text = replace_str(text,"image-")
                     text = "![avatar]" + "("+ "https://github.com/xie-1399/RISCVZone/blob/main/doc/pic/"+ args.topic + "/" \
-                           + text.split("\\")[-1]
+                           + text
                 elif(str(text).find(".jpg")!=-1):
                     pic_path = text.split('(')[-1].replace(")","").replace("\n","")
                     get_picture(pic_path,args.topic)
                     text = rename("jpg",text)
+                    text = replace_str(text,"image-")
                     text = "![avatar]" + "(" + "(https://github.com/xie-1399/RISCVZone/blob/main/doc/pic/"+ args.topic + "/" \
-                           + text.split("\\")[-1]
+                           + text
                 update_list.append(text)
 
         #Update file

@@ -94,6 +94,13 @@ void Read(){
     Readline("./funcPointer.c");
 }
 
+void usefflush(){
+    printf("Hello\n");
+    fflush(stdout);
+    printf("world\n");
+    exit(EXIT_SUCCESS);
+}
+
 void Write(){
     /*
      * putchar/puts/printf -- for stdout
@@ -113,5 +120,6 @@ void Write(){
 int main(){
     Read();
     Write();
+    usefflush();
     return 0;
 }
