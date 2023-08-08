@@ -1,9 +1,1 @@
-[submodule "OS/xv6-riscv"]
-	path = OS/xv6-riscv
-	url = https://github.com/mit-pdos/xv6-riscv.git
-[submodule "CPU/NaxRiscv"]
-	path = CPU/NaxRiscv
-	url = https://github.com/xie-1399/NaxRiscv.git
-[submodule "CPU/SpinalHDL"]
-	path = CPU/SpinalHDL
-	url = https://github.com/SpinalHDL/SpinalHDL.git
+
