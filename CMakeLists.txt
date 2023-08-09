@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.9)
 
-project(RISCVZone)
+project(CSArch)
 
 add_executable(ProcessAPI OS/Introduce/ProcessAPI.cpp)
 add_executable(Thread OS/Introduce/Thread.cpp)
@@ -19,9 +19,9 @@ add_executable(peterson-barrier OS/NJU/Thread/peterson-barrier.c)
 add_executable(xchg OS/NJU/Thread/Lock/xchg.c)
 
 #About C++
-add_executable(funcPointer C++/Pointer/funcPointer.c)
-add_executable(Structure C++/Pointer/Structure.c)
-add_executable(IO C++/Pointer/IO.c)
-add_executable(Stard C++/Example/function.cpp C++/Example/Stard.cpp)
-add_executable(signal C++/Simulation/signal_function.cpp
-        C++/Simulation/parseArgFirst.cpp C++/Simulation/Verilatorsim.cpp)
+add_executable(funcPointer src/C++/Pointer/funcPointer.c)
+add_executable(Structure srcC++/Pointer/Structure.c)
+add_executable(IO src/C++/Pointer/IO.c)
+add_executable(Stard src/C++/Example/function.cpp C++/Example/Stard.cpp)
+add_executable(signal src/C++/Simulation/signal_function.cpp
+        src/C++/Simulation/parseArgFirst.cpp src/C++/Simulation/Verilatorsim.cpp)
